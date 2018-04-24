@@ -37,8 +37,18 @@
 
 训练相关的.py文件：
 
-	train_launcher.py : 训练程序进入文件
+	train_launcher.py : 训练程序文件
 	datagen.py : 训练初始化文件
 	hourglass_tiny.py : 训练模型文件
 
-在训练结束后，后自动的保存
+在训练结束后，自动的保存训练模型,在'config.cgf'中saver_directory对应的路径下。
+
+## 测试
+运行test.py文件开始测试，载入训练得到的模型，测试的参数也通过'config.cgf'文件载入，最后输出比赛规定的关节点的坐标参数。
+
+训练相关的.py文件：
+
+	test_launcher.py : 测试程序文件
+	predictClass.py : 关节点预测文件
+
+
