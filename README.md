@@ -36,63 +36,44 @@ numpy 1.13.3
   
 
 ## 训练步骤
-1.运行TRAIN/preprocess.py将数据分为训练集和测试集
+运行train/train_launcher.py，其中初始学习率默认设为0.00025，训练过程中，每隔3000步，学习率衰减百分比0.96
 ```
-$ cd TRAIN/
-$ python preprocess.py
+$ cd train/
+$ python train_launcher.py
 ```
-2.运行TRAIN/run.py，其中初始学习率默认设为1e-4
-```
-$ python run.py
-```
-3.观测结果，当loss-coor开始震荡，学习率调整为1e-5，继续训练，知道梯度不再下降
 
 ## 测试步骤
-1.运行TEST/run.py进行测试，结果保存在csv文件
+运行test/test_launcher.py进行测试，结果保存为csv文件
 ```
-$ cd TEST/
-$ python run.py
+$ cd test/
+$ python test_launcher.py
 ```
 ## 补充说明
 ### 工程结构
-所有的训练数据和测试数据都在data文件夹下
+所有的训练数据在train/data文件夹下，测试数据在test/data文件夹下
 
-测试过程的中间文件都保存在log文件夹下
+测试过程的中间文件都保存在log_dir文件夹下
 
-最终的测试结果保存在log/hgs/eva/testb_multi_avg/submit.csv中
 ```Shell
 Project
-   	TRAIN
-   		models.py
-		preprocess.py
-		run.py
-	TEST
-		models.py
-		run.py
-	data
-		train
-			Annotation
-			train.csv
+   	train
+		data
 			Images
-			...
-		test
+			Annotations
+   		model.py
+		mydatagen.py
+		train_launcher.py
+		myconfig.cfg
+	test
+		data
 			Images
-			...
-	log
-		hgs
-			eva
-				test_multi_flip_avg
-				submit.csv
-				model1
-				...
-				model2
-				...
-				console
-				epoch0...
-				...
-   
+		model.py
+		predictClass.py
+		myconfig.cfg
+		test_launcher.py
 ```
 ### 整体思路
-根据Hourglass关节定位模型进行改进
+使用经典Hourglass定位模型进行改进
+
 
 
