@@ -62,11 +62,11 @@ $ python run.py
 最终的测试结果保存在log/hgs/eva/testb_multi_avg/submit.csv中
 ```Shell
 Project
-   TRAIN
-   	models.py
-	preprocess.py
-	run.py
-TEST
+   	TRAIN
+   		models.py
+		preprocess.py
+		run.py
+	TEST
 		models.py
 		run.py
 	data
@@ -91,7 +91,7 @@ TEST
 				epoch0...
 				...
    
-   ```
+```
 ### 整体思路
 根据Hourglass关节定位模型进行改进
 
