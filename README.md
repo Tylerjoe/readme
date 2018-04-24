@@ -37,14 +37,14 @@ numpy 1.13.3
 
 ## 训练步骤
 1.运行TRAIN/preprocess.py将数据分为训练集和测试集
-   ```Shell
-   $ cd TRAIN/
-   $ python preprocess.py
-   ```
+```
+$ cd TRAIN/
+$ python preprocess.py
+```
 2.运行TRAIN/run.py，其中初始学习率默认设为1e-4
-   ```Shell
-   $ python run.py
-   ```
+```
+$ python run.py
+```
 3.观测结果，当loss-coor开始震荡，学习率调整为1e-5，继续训练，知道梯度不再下降
 
 ## 测试步骤
@@ -60,13 +60,13 @@ $ python run.py
 测试过程的中间文件都保存在log文件夹下
 
 最终的测试结果保存在log/hgs/eva/testb_multi_avg/submit.csv中
-   ```Shell
-   Project
-   	TRAIN
-   		models.py
-		preprocess.py
-		run.py
-	TEST
+```Shell
+Project
+   TRAIN
+   	models.py
+	preprocess.py
+	run.py
+TEST
 		models.py
 		run.py
 	data
