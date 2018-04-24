@@ -49,10 +49,10 @@ numpy 1.13.3
 
 ## 测试步骤
 1.运行TEST/run.py进行测试，结果保存在csv文件
-   ```Shell
-   $ cd TEST/
-   $ python run.py
-   ```
+```
+$ cd TEST/
+$ python run.py
+```
 ## 补充说明
 ### 工程结构
 所有的训练数据和测试数据都在data文件夹下
