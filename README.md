@@ -43,11 +43,13 @@ $ python train_launcher.py
 ```
 
 ## 测试步骤
+首先将训练生成的model放到test文件夹下，
 运行test/test_launcher.py进行测试，结果保存为csv文件
 ```
 $ cd test/
 $ python test_launcher.py
 ```
+
 ## 补充说明
 ### 工程结构
 所有的训练数据在train/data文件夹下，测试数据在test/data文件夹下
@@ -73,7 +75,9 @@ Project
 		test_launcher.py
 ```
 ### 整体思路
-使用经典Hourglass定位模型进行改进
+使用Hourglass-network作为基础，
+将每个特征点做二维高斯处理，得到一个64X64的heatmap，与网络输出结果进行比较，
+根据不同类型的服装，设置不同的损失函数，并进行训练和优化
 
 
 
