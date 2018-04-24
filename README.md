@@ -1,7 +1,7 @@
 # 服装关键点检测模型训练和测试说明
 本模型使用了全卷积网络解决服装关键点定位问题，给出了基于tensorflow的代码模型。
 
-需要依赖tensorflow和opencv
+需要依赖tensorflow、opencv、python3.5
 
 ## 参数文件
 用于调整模型的所有参数都放在'config.cgf'里面。
