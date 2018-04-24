@@ -1,7 +1,11 @@
 # 服装关键点检测模型训练和测试说明
 本模型使用了全卷积网络解决服装关键点定位问题，给出了基于tensorflow的代码模型。
 
-需要依赖tensorflow、opencv、python3.5
+## 运行环境
+tensorflow1.3.0，
+opencv2.4，
+python3.5，
+numpy 1.13.3
 
 ## 参数文件
 用于调整模型的所有参数都放在'config.cgf'里面。
@@ -30,26 +34,65 @@
 	saver_step : 写入训练文件的步长
 	saver_directory:保存训练模型的路径
   
-## 训练
-'config.cgf'中的img_directory添加存放图片文件夹的路径，training_txt_file添加图片信息的csv文件的路径，其他的训练参数可以可以相应调整。
 
-运行train_launcher.py文件开始训练，会自动的载入'config.cgf'文件中的相关参数。
+## 训练步骤
+1.运行TRAIN/preprocess.py将数据分为训练集和测试集
+   ```Shell
+   $ cd TRAIN/
+   $ python preprocess.py
+   ```
+2.运行TRAIN/run.py，其中初始学习率默认设为1e-4
+   ```Shell
+   $ python run.py
+   ```
+3.观测结果，当loss-coor开始震荡，学习率调整为1e-5，继续训练，知道梯度不再下降
 
-训练相关的.py文件：
+## 测试步骤
+1.运行TEST/run.py进行测试，结果保存在csv文件
+   ```Shell
+   $ cd TEST/
+   $ python run.py
+   ```
+## 补充说明
+### 工程结构
+所有的训练数据和测试数据都在data文件夹下
 
-	train_launcher.py : 训练程序文件
-	datagen.py : 训练初始化文件
-	hourglass_tiny.py : 模型文件
+测试过程的中间文件都保存在log文件夹下
 
-在训练结束后，自动的保存训练模型,在'config.cgf'中saver_directory对应的路径下。
-
-## 测试
-运行test.py文件开始测试，载入训练得到的模型，测试的参数也通过'config.cgf'文件载入，最后输出比赛规定的关节点的坐标参数。
-
-训练相关的.py文件：
-
-	test_launcher.py : 测试程序文件
-	hourglass_tiny.py : 模型文件
-	predictClass.py : 关节点预测文件
+最终的测试结果保存在log/hgs/eva/testb_multi_avg/submit.csv中
+   ```Shell
+   Project
+   	TRAIN
+   		models.py
+		preprocess.py
+		run.py
+	TEST
+		models.py
+		run.py
+	data
+		train
+			Annotation
+			train.csv
+			Images
+			...
+		test
+			Images
+			...
+	log
+		hgs
+			eva
+				test_multi_flip_avg
+				submit.csv
+				model1
+				...
+				model2
+				...
+				console
+				epoch0...
+				...
+   
+   ```
+### 整体思路
+根据Hourglass关节定位模型进行改进
 
 
