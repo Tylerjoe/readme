@@ -6,7 +6,7 @@
 ## 参数文件
 用于调整模型的所有参数都放在'config.cgf'里面。
 
-	training_txt_file : 存放图片信息的txt文件路径
+	training_txt_file : 存放图片信息的csv文件路径
 	img_directory : 图片存放路径
 	img_size : 图片的大小
 	hm_size : 热图的大小
@@ -31,7 +31,7 @@
 	saver_directory:保存训练模型的路径
   
 ## 训练
-'config.cgf'中的img_directory添加存放图片文件夹的路径，training_txt_file添加图片信息的txt文件的路径，其他的训练参数可以可以相应调整。
+'config.cgf'中的img_directory添加存放图片文件夹的路径，training_txt_file添加图片信息的csv文件的路径，其他的训练参数可以可以相应调整。
 
 运行train_launcher.py文件开始训练，会自动的载入'config.cgf'文件中的相关参数。
 
@@ -39,7 +39,7 @@
 
 	train_launcher.py : 训练程序文件
 	datagen.py : 训练初始化文件
-	hourglass_tiny.py : 训练模型文件
+	hourglass_tiny.py : 模型文件
 
 在训练结束后，自动的保存训练模型,在'config.cgf'中saver_directory对应的路径下。
 
@@ -49,6 +49,7 @@
 训练相关的.py文件：
 
 	test_launcher.py : 测试程序文件
+	hourglass_tiny.py : 模型文件
 	predictClass.py : 关节点预测文件
 
 
